@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="header">
+        <p>{{ text.toLocaleUpperCase() }}</p>
+    </div>
+    <br />
+    <div id="shopping-list">
+        <p>{{ header }}</p>
+        <input type="text" v-model="newItem" v-bind:placeholder="newItemPlaceHolder" />
+        <p>Will add {{ newItem ? newItem : '[Empty]' }} into Product list</p>
+        <!-- 
+			=> Code chưa sử dụng method: <button v-on:click="items.push(newItem)" >
+			Với đoạn mã trên, nếu thêm một xử lý là reset giá trị của newItem thì source code sẽ bắt đầu trở nên phức tạp. Điều mong muốn là với sự kiện click thì sẽ có một method tương ứng để xử lý, mà ở đó có thể dễ dàng thêm vào xử lý nếu muôn.
+			Để giải quyết, chúng ta sử dụng methods mà Vue cung cấp.
+			Vue cho phép khai báo xử lý cho sự kiện trong methods tag, khi sử dụng, chỉ cần gọi đến tên method là được.
+			Việc xử lý logic đưa về phía JS xử lý sẽ dễ dàng hơn cho việc development.
+		  -->
+        <!-- Thực hiện gọi method addItem khi có sự kiện click button -->
+        <!-- Thực hiện đồng thời 2 xử lý, add vào list và reset giá trị -->
+        <button v-on:click="addItem">
+            Add
+        </button>
+        <!-- Reset giá trị -->
+        <!-- Việc quản lý xử lý logic trong method và chỉ gọi đến method khi cần làm source code rõ ràng hơn -->
+        <!-- Sử dụng @ thay cho v-on: -->
+        <button @click="clearItem">
+            Clear
+        </button>
+        <ul>
+            <li v-for="item in items">{{ item }}</li>
+        </ul>
+    </div>
+    <script src="source.js"></script>
+</body>
+
+</html>

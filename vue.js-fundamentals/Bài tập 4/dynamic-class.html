@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<style>
+    .strikeout {
+        text-decoration: line-through;
+    }
+    .bold {
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <div id="header">
+        <p>{{ text.toLocaleUpperCase() }}</p>
+    </div>
+    <br />
+    <div id="shopping-list">
+        <div id="list-header">
+            <p>{{ header }}</p>
+            <button v-if="state == 'default'" @click="changeState('edit')">Edit</button>
+            <button v-else @click="changeState('default')">Cancel</button>
+        </div>
+        <br />
+        <div v-if="state == 'edit'" class="add-new">
+            <!-- Nhìn lại v-bind, ở đây đang set placeholder với giá trị được khai báo ở đối tượng Vue -->
+            <!-- Ứng dụng của nó tương tự cho các thuộc tính khác của HTML như disable, class, style -->
+            <input type="text" v-model="newItem" v-bind:placeholder="newItemPlaceHolder" />
+            <p>Will add {{ newItem ? newItem : '[Empty]' }} into Product list</p>
+            <!-- Áp dụng v-bind cho việc active/inactive button -->
+            <!-- Button sẽ inactive khi newItem chưa được nhập giá trị -->
+            <button v-bind:disabled="newItem == ''" @click="addItem">Add</button>
+            <!-- v-bind: cũng có thể được rút gọn thành : -->
+            <!-- Việc này làm cho việc development ngắn gọn hơn -->
+            <button :disabled="newItem == ''" @click="clearItem">Clear</button>
+        </div>
+        <div class="list-view">
+            <ul>
+                <!-- Sử dụng v-bind với class để điều khiển style -->
+                <!-- Có 2 cách để thực hiện điều khiển class -->
+                <!-- Kiểu Object:  {strikeout : item.buy, bold : item.piority} -->
+                <!-- Kiểu Object:  Đối tượng cần kiểm tra là kiểu boolean, khả năng tùy biến thấp -->
+                <!-- Kiểu Array:  [item.buy  == true ? 'strikeout' : '', item.piority == true ? 'bold' : ''] -->
+                <!-- Kiểu Object:  Đối tượng cần kiểm tra là một mệnh đề, khả năng tùy biến cao hơn, nên dùng -->
+                <li v-for="item in items" :class="{strikeout : item.buy, bold : item.piority}" @click="doBuy(item)">{{ item.name }}</li>
+                <li v-for="item in items" :class="[item.buy ? 'strikeout' : '', item.piority ? 'bold' : '']" @click="doBuy(item)">{{ item.name }}</li>
+            </ul>
+            <p v-if="items.length === 0">There are no product !</p>
+        </div>
+    </div>
+    <script src="source.js"></script>
+</body>
+
+</html>

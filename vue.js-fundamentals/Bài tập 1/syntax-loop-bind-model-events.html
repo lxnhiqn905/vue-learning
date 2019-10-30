@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <!-- Khai báo Vue framework, brower sẽ download từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <!-- This is header -->
+    <!-- Cú pháp get data {{ data in vue }} -->
+    <!-- Cần khai báo 1 đối tượng Vue cho dev tag id header, tham khảo js file -->
+    <!-- id header là duy nhất, vì Vue sẽ khai báo làm việc trên DOM có chứa id đó -->
+    <!-- vue return 1 js object, so can apply the js method on vue data, example toLocaleUpperCase() -->
+    <div id="header">
+        <p>{{ text.toLocaleUpperCase() }}</p>
+    </div>
+    <br />
+    <!-- This is List -->
+    <!-- Cần khai báo 1 đối tượng Vue cho dev tag id shopping-list -->
+    <div id="shopping-list">
+        <!-- get data {{ data in vue }} -->
+        <p>{{ header }}</p>
+        <!-- get data {{ data in vue }} -->
+        <!-- khai báo tag input tương tác với người dùng -->
+        <!-- Vue cung cấp cơ chế two-way binding thông qua v-model, giá trị được input sẽ được phản ánh ngay đến trạng thái của ứng dụng -->
+        <!-- sử dụng v-model để phản ánh ngay lập tức data đến newItem trong Vue, ở đây, item nào sử dụng newItem để hiển thị cũng phản án trạng thái ngay lập tức -->
+        <!-- Để gán giá trị vào thuộc tính của HTML, Vue cung cấp v-bind, như bên dưới, vue bind giá trị của newItemPlaceHolder vào placeholder của input tag -->
+        <input type="text" v-model="newItem" v-bind:placeholder="newItemPlaceHolder" />
+        <!-- get data {{ data in vue }} -->
+        <!-- Phản ứng lập tức khi giá trị newItem trong Vue có thay đổi -->
+        <!-- Kết hợp với input tag ở trên, ta có thể thấy cơ chế two-way binding của Vue rất mạnh mẽ  -->
+        <!-- Có thể sử dụng rexgession trong cú pháp của Vue, bên dưới là if/else -->
+        <p>Will add {{ newItem ? newItem : '[Empty]' }} into Product list</p>
+        <!-- Vue cung cấp v-on để xử lý sự kiện thông qua trigger là thuộc tính của HTML -->
+        <!-- Phía sau v-on là thuộc tính của HTML mà Vue sẽ nhận trigger để thực thi -->
+        <!-- Như để cập ở trên, items mà Vue trả về là js object, cụ thể ở đây là array nên có thể dùng push() để thêm newItem -->
+        <!-- Trên thực tế, items và newItem được quản lý bỏi 1 object cha khác ($vm0), để chỉ đúng ta phải dùng như sau: $vm0.items.push($vm0.newItem), tuy nhiên Vue đúng thông minh để biết rằng items và newItem đang được mình quản lý, vậy nên không cần phải chỉ rõ object cha ở đây  -->
+        <!-- Sự kiện click của HTML xảy ra, sẽ gửi đến Vue 1 sự kiện, ngay lập tức item add newItem vào items, theo cơ chế two-way-binding, items sẽ được phản ánh ngay giá trị và nơi nào dùng nó cũng sẽ được cập nhật ngay giá trị mới -->
+        <!-- Ngoài click trên button, v-on cũng có thể dùng trên enter key của text box, ví dụ:  v-on:keyup.enter="items.push(newItem)" chẳng hạn -->
+        <!-- Trong Vue, v-on: được viết gọn là @, hãy thử dùng nó -->
+        <button v-on:click="items.push(newItem)">
+            Add
+        </button>
+        <!-- Hiển thị list product -->
+        <ul>
+            <!-- Vue cung cấp v-for để thực hiện loop cho items là array -->
+            <!-- item là biến được Vue tạo ra để chứa giá trị tạm thời khi loop, nó dùng để hiển thị với cú pháp đơn giản của Vue {{ item }} -->
+            <li v-for="item in items">{{ item }}</li>
+        </ul>
+    </div>
+    <!-- Vì Vue sẽ thực hiện xử lý dựa trên DOM, vì vậy việc tạo đối tượng Vue thì sẽ thực hiện sau khi HTML đã được render hoàn tất -->
+    <script src="source.js"></script>
+</body>
+
+</html>

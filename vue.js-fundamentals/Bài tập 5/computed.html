@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<style>
+    .strikeout {
+        text-decoration: line-through;
+    }
+    .bold {
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <div id="header">
+        <p>{{ text.toLocaleUpperCase() }}</p>
+    </div>
+    <br />
+    <div id="shopping-list">
+        <div id="list-header">
+            <p>{{ header }}</p>
+            <button v-if="state == 'default'" @click="changeState('edit')">Edit</button>
+            <button v-else @click="changeState('default')">Cancel</button>
+        </div>
+        <br />
+        <div v-if="state == 'edit'" class="add-new">
+            <input type="text" v-model="newItem" v-bind:placeholder="newItemPlaceHolder" />
+            <!-- Một tính năng mạnh mẽ khác là Computed, nó cho phép tính toán xử lý data từ đối tượng Vue -->
+            <!-- Sử dụng cú pháp đon giản của Vue để gọi xử lý trong đối tượng Vue -->
+            <!-- Bên dưới là sủ dụng thuộc tính characterCount ở đối tượng Vue để count số lượng ký tự đã nhập -->
+            <p>{{ characterCount }}/ 200</p> 
+            <p>Will add {{ newItem ? newItem : '[Empty]' }} into Product list</p>
+            <button v-bind:disabled="newItem == ''" @click="addItem">Add</button>
+            <button :disabled="newItem == ''" @click="clearItem">Clear</button>
+        </div>
+        <div class="list-view">
+            <ul>
+                <li v-for="item in reverseItems" :class="[item.buy ? 'strikeout' : '', item.piority ? 'bold' : '']" @click="doBuy(item)">{{ item.name }}</li>
+            </ul>
+            <p v-if="items.length === 0">There are no product !</p>
+        </div>
+    </div>
+    <script src="source.js"></script>
+</body>
+
+</html>

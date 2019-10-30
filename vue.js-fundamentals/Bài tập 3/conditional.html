@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="header">
+        <p>{{ text.toLocaleUpperCase() }}</p>
+    </div>
+    <br />
+    <div id="shopping-list">
+        <!-- Nhóm phần header vào 1 tag -->
+        <div id="list-header">
+            <p>{{ header }}</p>
+            <!-- Chỉ hiển thị khi ở trạng thái default, khi click sẽ chuyển trạng thái thành edit -->
+            <button v-if="state == 'default'" @click="changeState('edit')">Edit</button>
+            <!-- Ngược lại ở trên -->
+            <button v-else @click="changeState('default')">Cancel</button>
+        </div>
+        <br />
+        <!-- Nhóm phần thêm mới vào 1 tag -->
+        <!-- Sử dụng state đã khai báo ở đối tượng Vue để điều hiển hiển thị -->
+        <!-- Chỉ hiển thị div này khi có state là edit -->
+        <div v-if="state == 'edit'" class="add-new">
+            <input type="text" v-model="newItem" v-bind:placeholder="newItemPlaceHolder" />
+            <p>Will add {{ newItem ? newItem : '[Empty]' }} into Product list</p>
+            <button @click="addItem">Add</button>
+            <button @click="clearItem">Clear</button>
+        </div>
+        <!-- Nhóm phần hiển thị list vào 1 tag -->
+        <div class="list-view">
+            <!-- Nếu có record thì hiển thị -->
+            <ul>
+                <li v-for="item in items">{{ item }}</li>
+            </ul>
+            <!-- Nếu không thì hiển thị message bên dưới -->
+            <!-- Sử dụng if cả Vue : v-if, input là điều kiện để kiểm tra -->
+            <!-- Chú ý rằng, nếu điều kiện if không đúng, Vue sẽ loại bỏ hoàn toàn tag p -->
+            <p v-if="items.length === 0">There are no product !</p>
+        </div>
+    </div>
+    <script src="source.js"></script>
+</body>
+
+</html>

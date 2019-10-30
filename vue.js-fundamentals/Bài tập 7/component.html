@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<style>
+    .strikeout {
+        text-decoration: line-through;
+    }
+    .bold {
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <!-- Sử dụng 1 component bằng cách gọi đến nó -->
+    <!-- 
+        Lưu ý: Khi component được gọi, Vue sẽ thực hiện render DOM đã được khai báo trong component 
+        Vì vậy component chỉ render được trong DOM element đã được khai báo với Vue
+        Nếu không, Vue sẽ không biết render vào đâu và sẽ bỏ qua
+        Vue liên kết DOM với data và component, nên DOM đó phải được quản lý thì mới component mới thực thi được
+     -->
+    <!-- Khai báo đối tượng Vue để quản lý DOM id page-header-el -->
+    <div id="page-header-el">
+        <!-- Gọi component để render HTML vào DOM id page-header-el đã được khai báo -->
+        <page-header-component></page-header-component>
+    </div>
+    <!-- 
+        Shopping list
+     -->
+    <br />
+    <div id="shopping-list">
+        <div id="list-header">
+            <!-- Gọi component shopping-list-header với tham số truyền vào là header -->
+            <!-- shopping-list đã được Vue quản lý  -->
+            <shopping-list-header :text="header"></shopping-list-header>
+            <button v-if="state == 'default'" @click="changeState('edit')">Edit</button>
+            <button v-else @click="changeState('default')">Cancel</button>
+        </div>
+        <br />
+        <div v-if="state == 'edit'" class="add-new">
+            <input type="text" v-model="newItem" v-bind:placeholder="newItemPlaceHolder" />
+            <p>{{ characterCount }}/ 200</p>
+            <p>Will add {{ newItem ? newItem : '[Empty]' }} into Product list</p>
+            <button v-bind:disabled="newItem == ''" @click="addItem">Add</button>
+            <button :disabled="newItem == ''" @click="clearItem">Clear</button>
+        </div>
+        <div class="list-view">
+            <ul>
+                <!-- Gọi component với v-for -->
+                <!-- Binding item -->
+                <!-- Binding classes -->
+                <!-- Binding event @click="doBuy(item)" TODO-->
+                <product-item-detail v-for="item in reverseItems" :item="item" :class="[item.buy ? 'strikeout' : '', item.piority ? 'bold' : '']"></product-item-detail>
+            </ul>
+            <p v-if="items.length === 0">There are no product !</p>
+        </div>
+    </div>
+    <script src="source.js"></script>
+</body>
+
+</html>
