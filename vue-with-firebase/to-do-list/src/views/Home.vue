@@ -4,13 +4,14 @@
     <div>
       <ul>
         <li v-for="item in this.$store.getters.getItems" :key="item.id">
-          {{ item.title}}
+          {{ item.title}}  <button @click="deleteTodo(item.id)">Delete</button>
         </li>
+        
       </ul>
     </div>
     
     <div>
-      <input v-model="myTodo" /> <button @click="addTodo">Add</button>
+      <input v-model="myTodo" /><button @click="addTodo">Add</button>
       <dir v-if="errors !== ''" id="errors">{{ errors }}</dir>
     </div>
   </div>
@@ -23,7 +24,7 @@ import { db } from '@/main'
 export default {
   name: 'home',
   beforeCreate () {
-    this.$store.dispatch('doSetItems')
+    this.$store.dispatch('setItems')
   },
   data () {
     return {
@@ -47,7 +48,22 @@ export default {
           this.errors = error
         })
       } else {
-        this.errors = 'Todo items is empty'
+        this.errors = 'Todo item is empty'
+      }
+    },
+    deleteTodo(id) {
+      if (id) {
+        db.collection('items').doc(id).delete().then(
+          function() {
+            console.log("Document deleted succesfully")
+          }
+        ).catch(
+          function(error) {
+            this.errors = error
+          }
+        )
+      } else {
+       this.errors = 'Todo id is not valid'
       }
     }
   }

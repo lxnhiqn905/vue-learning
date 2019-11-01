@@ -14,7 +14,7 @@ export default new Vuex.Store({
     })
   },
   actions: {
-    doSetItems: context => {
+    setItems: context => {
       context.commit('setItems')
     }
   },

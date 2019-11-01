@@ -14,4 +14,4 @@ Lession: https://savvyapps.com/blog/definitive-guide-building-web-app-vuejs-fire
 
 6. Get all data
 
-7. Delete item - TODO
+7. Delete item - TODO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
