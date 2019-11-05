@@ -2,7 +2,7 @@ Learning plan
 	1. Vue 					DONE
 	2. Vuex 				Doing
 	3. Nuxt 				DONE
-	4. Firebase Google		Doing
+	4. Firebase Google		DONE
 	5. Amplify AWS			NYS
 	6. Lambda AWS			NYS
 
