@@ -47,7 +47,7 @@ Reference: https://nuxtjs.org/guide
 	- package.json : Nơi chứa các dependency và scripts
 
 4. Tìm hiểu về layout-pages
-	- Nuxt sẽ tự động 1 router tương ứng với pages
+	- Nuxt sẽ tự động tạo 1 router tương ứng với pages
 	- Nếu không có chỉ định layout cụ thể thì pages nhận layout mặc định
 
 5. Cấu hình CSS global với nuxt.config
