@@ -65,7 +65,7 @@
     export default {
         
         name: "Login",
-        data() {doc
+        data() {
             return {
                 loginForm: {
                     email: '',

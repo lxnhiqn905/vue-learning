@@ -1,5 +1,8 @@
 Lession: https://vueschool.io/lessons/what-is-nuxtjs
+
 Reference: https://nuxtjs.org/guide
+Reference: https://academind.com/learn/vue-js/nuxt-js-tutorial-introduction/core-concepts/
+
 
 1. Giới thiệu
 - Nuxt.js là framework dùng để tạo ứng dung Vue.js
@@ -16,6 +19,9 @@ Reference: https://nuxtjs.org/guide
 	- Code Splitting
 		- Nuxt tự động splitting code để phục vụ đúng và đủ. 
 		- Ví dụ, có 1 JS file được định nghĩa 100 component, tuy nhiên khi load homepage thì chỉ cần 10 trong 100 component đó, việc load toàn bộ làm cho nó trở nên dư thừa vì không sử dụng. Nuxt tự động split code cho từng page để phục vụ đúng và đủ các yêu cầu.
+
+	- Tự động tạo router thông qua cấu trúc folder (pages)
+		- Bản chất vẫn sử dụng vue-router nhưng được config tự động thông qua cấu trúc thư mục pages
 
 2. Tạo project với nuxt
 	- yarn create nuxt-app <project-name>
