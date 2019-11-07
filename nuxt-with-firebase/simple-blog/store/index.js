@@ -1,36 +1,15 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { postsCollection } from "@/firebase.config.js";
 
-import {postsCollection} from '~/plugins/firebaseConfig.js'
+export const state = () => {
+    posts : []
+}
 
-Vue.use(Vuex)
-
-// Fetch posts
-postsCollection.orderBy('createOn').onSnapshot(snapshot => {
-    let postArrays = []
-
-    snapshot.forEach(doc => {
-    let post = doc.data()
-    post.id = doc.id
-    postArrays.push(post)
-    })
-
-    console.log(postArrays)
-    store.commit('setPosts', postArrays)
-})
-
-
-export const store = new Vuex.Store({
-  state: {
-    posts: []
-  },
-  mutations: {
-    setPosts(state, val) {
-      state.posts = val
+export const mutations = {
+    SET_POSTS (state, val) {
+        state.posts = val
     }
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+}
+
+export const actions = {
+
+}

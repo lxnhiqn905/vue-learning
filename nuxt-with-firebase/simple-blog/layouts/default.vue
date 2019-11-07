@@ -17,9 +17,6 @@ import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
-  head: {
-    title: 'Home page - Simple blog'
-  },
   components: {
     Header,
     Footer

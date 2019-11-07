@@ -1,4 +1,4 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase'
 import 'firebase/firestore'
 
 // Firebase configuration
@@ -14,7 +14,6 @@ if (!firebase.apps.length) {
         measurementId: "G-N0E4MLG04B"
     }
     firebase.initializeApp(config)
-    // firebase.firestore().settings({timestampsInSnapshots: true})
 }
 
 // Firestore
