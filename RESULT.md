@@ -1,18 +1,18 @@
-Nuxt
-	Nuxt là gì ?
+# Nuxt
+	1. Nuxt là gì ?
 		- Nuxt là framework cho phép xây dựng ứng dụng Vue ở phía server. Giải quyết bài toán SEO bằng giải pháp Rendering Server Side.
 		- Với ứng dụng Vue, client nhận về là 1 HTML template và JS code, các Crawler không thể nhận diện thông tin bên trong website, vì vậy vấn để SEO chưa được giải quyết cho đến khi có Nuxt.
 		- Ngoài RSS thì Nuxt vẫn support SPA của Vue như cũ, và cung cấp thêm cơ chế Generate để build Statis site. Với cơ chế Generate, ứng dụng được đáp ứng nhanh hơn với statis file.
 		- Tổ chức code rõ ràng, làm cho việc develop dễ dàng hơn.
 		- Cơ chế code spliting, chỉ cung cấp resouce đủ để render page
 
-	Thành phần cấu tạo:
+	2. Thành phần cấu tạo:
 		- Vue
 		- Vuex
 		- Vue Router
 
 
-	Life cycle of Nuxt
+	3. Life cycle of Nuxt
 		- Nuxt framework có Life cycle mở rộng từ Vue, khởi động khi có request tới. Có thể tách thành 2 Life cycle con nối tiếp nhau 1 -> 2
 			1. Nuxt Life cycle: Comming request -> Render
 			2. Vue Life cycle: Render request -> Complete
@@ -21,7 +21,7 @@ Nuxt
 		- Đối với Vue Life cycle thì sử dụng this như trước đây
 
 
-	Điểm khác biệt giữa Vue và Nuxt
+	4. Điểm khác biệt giữa Vue và Nuxt
 		- Layout: Vue dùng App.vue, Nuxt dùng [layout].vue ở thư mục layouts
 		- Page: Vue implement ở views, Nuxt implement ở pages
 		- Component thì như nhau
@@ -29,7 +29,7 @@ Nuxt
 		- Store: Vue thì tự khai báo, Nuxt thì khai báo sẵn, khi muốn khai báo thêm thì định nghĩa các const tương ứng
 	
 
-	Use case
+	5. Use case
 		- validate: Nuxt cung cấp validate method, sử dụng cho pages, để validate giá trị được truyền tới thông qua param/query, giá trị trả về là true hoặc false. Với false thì Nuxt sẽ tự động redirect tới error page,
 
 		- fetch data:
@@ -65,26 +65,26 @@ Nuxt
 			- Nuxt tự động generate router
 			- asyncData, fetch, initNuxtServer, validate nên khi implement cần phải đúng cấu trúc input param, nếu không thì Nuxt sẽ không tự động gọi được.
 
-		- How to implement: https://nuxt.org/api
+	6. API reference: https://nuxt.org/api
 
 
-Amplify
-	Amplify là gì:
+# Amplify
+	1. Amplify là gì:
 		- Amplify là framework cho phép xây dựng backend cho ứng dụng sử dụng các dịch vụ của AWS như: S3, Lambda, AppAsync, DynamoDB, Cognito, ...
 
-	Thành phần cấu tạo:
+	2. Thành phần cấu tạo:
 		- CLI: Cung cấp interface để tạo, cấu hình, deploy và pushlish dịch vụ ở AWS
 		- Thư viện: Cung cấp thư việc để dễ dàng làm việc với các dịch vụ AWS => Tìm hiểu thêm
 		- UI Component: Cho phép attach các UI component cho ứng dụng thông qua CLI => Tìm hiểu thêm
 
-	Với Amplify, thì làm được gì:
+	3. Với Amplify, thì làm được gì:
 		- Hosting: Sẽ có ứng dụng trên cloud sử dụng S3
 		- API: Xây dựng GraphQL API ở AWS với AppAsync
 		- Function: Có các function tự động ở AWS với Lambda
 		- Authencation: Authen ứng dụng vơi AWS Cognito 
 		- No SQL DB: Với AWS DynamoDB
 
-	Kiến trúc ứng dụng với Vue và Amplify:
+	4. Kiến trúc ứng dụng với Vue và Amplify:
 		Locally
 			1. FrontEnd: Vue
 			2. Backend: Amplify
@@ -101,14 +101,14 @@ Amplify
 						- Cognito
 
 	
-	Cách mà Amplify khai báo service với AWS:
+	5. Cách mà Amplify khai báo service với AWS:
 		- Tương ứng mỗi service được tạo, thì có:
 			1. Service tương ứng được tạo
 			2. CloudFormation stack sẽ được tạo để quản lý service đã tạo
 			3. IAM role sẽ được tạo và được gán với CloudFormation stack để phân quyền sử dụng dịch vụ
 
 
-	Use case:
+	6. Use case:
 		1. Create Amplify backend:
 			amplify init
 
