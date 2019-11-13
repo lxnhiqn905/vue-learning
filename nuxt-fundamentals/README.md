@@ -83,3 +83,12 @@ Reference: https://academind.com/learn/vue-js/nuxt-js-tutorial-introduction/core
 	- Heroku	- SSR
 	- Netlify	- Pre-rendering
 	
+12. Vai dieu can nho
+	- Su dung data/asyncData de tao data cho pages, duoc gan vao Vue object
+	- Su dung fetch/initNuxtServer de tao du lieu ban dau
+	- Su dung store de luu trang thai
+	- Component chi co the su dung data o store hoac thong qua props
+	- Pages su dung data o store va data/asyncData
+
+13. Practice
+	- https://medium.com/@onlykiosk/the-complete-nuxt-guide-940751e1a6a5
