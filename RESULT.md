@@ -140,7 +140,7 @@
 		2. Với DynamoDB, thì theo kiến trúc hiện tại của dự án thì có thể thay thế bằng Firebase của Google, GraphQL sẽ là API để làm việc với Google Firebase
 
 
-Next plan:
+# Next plan:
 	- Với Nuxt, về cơ bản là kết hợp Vue, Vuex, Vue router nên ngoài việc nắm được cấu trúc framework thì cần phải học kỹ Vue, Vuex, Vue router thì mới sử dụng thuần thục
 	- Với Amplify, là chuối công cụ cho phép khai báo và sử dụng dịch vụ AWS, nên ngoài việc biết cách sử dụng framework thì cần phải dọc để biết cách sử dụng các service S3, Lambda, AppAsync, Cognito, DynamoDB thì mới có thể sử dụng thuần thục
 
