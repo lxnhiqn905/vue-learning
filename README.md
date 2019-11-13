@@ -1,12 +1,12 @@
-Learning plan
-	1. Vue 					DONE
-	2. Vuex 				Doing
-	3. Nuxt 				DONE
-	4. Firebase Google		DONE
-	5. Amplify AWS			NYS
-	6. Lambda AWS			NYS
+# Learning plan
+	1. Vue 					
+	2. Vuex 				
+	3. Nuxt 				
+	4. Firebase Google		
+	5. Amplify AWS			
+	6. Lambda AWS			
 
-Mục tiêu:
+# Mục tiêu:
 	- Với Vue
 		- Nắm được các khái niệm cơ bản nhất của Vue: Đối tượng Vue, component, cách mà Vue xử lý DOM
 
@@ -42,7 +42,4 @@ Mục tiêu:
 		- Hiểu Lambda là gì, đặc trưng và điểm mạnh của Lambda
 		- Cấu hình Lambda để crawl data từ 1 website
 		- Extract data, sử dụng GraphQL API và Amplify để import vào Google Firebase
-
-Vấn đề:
-	- Tài khoản AWS hiện tại đang inactive, không tạo được stack dùng cho Amplify
 
